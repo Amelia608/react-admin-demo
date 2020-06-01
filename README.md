@@ -3,6 +3,8 @@
 ## 1、在项目的根目录下创建config-overrides.js文件
 ## 2、安装 babel-plugin-import  (yarn add babel-plugin-import -D)
 ## 3、安装 react-app-rewired (yarn add react-app-rewired customize-cra -D)
+
+## 相关链接 https://www.jianshu.com/p/bb6bf56478a9
 ## 配置config-overrides.js 文件
 const { override, fixBabelImports ,addLessLoader} = require('customize-cra');
 
