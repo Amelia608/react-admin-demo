@@ -41,5 +41,5 @@ class Login extends React.Component {
     );
   }
 }
-const WrapLogin=Form.create()(Login);
+const WrapLogin=ReactDOM.render(<Login />, mountNode);
 export default WrapLogin
