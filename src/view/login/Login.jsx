@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import ReactDOM from 'react-dom'
 import "./Login.less";
 class Login extends React.Component {
   render() {
