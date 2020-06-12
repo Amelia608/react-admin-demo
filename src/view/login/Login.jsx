@@ -1,28 +1,52 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Form, Input, Button,Icon } from "antd";
 import "./Login.less";
 class Login extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  };
   render() {
+    const { getFieldDecorator } = this.props.form;
     return (
       <div className="login">
-        <header>React Admin管理后台</header>
+        <header>管理后台</header>
         <div className="login-form-wrapper">
           <h1>用户登录信息</h1>
           <div className="form-content-wrapper">
-            <Form name="normal_login">
-              <Form.Item name="username">
-                <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
-                />
+            <Form onSubmit={this.handleSubmit} className="login-form">
+              <Form.Item>
+                {getFieldDecorator("username", {
+                  rules: [
+                    { required: true, message: "Please input your username!" },
+                  ],
+                })(
+                  <Input
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder="Username"
+                  />
+                )}
               </Form.Item>
-              <Form.Item name="password">
-                <Input
-                  prefix={<LockOutlined className="site-form-item-icon" />}
-                  type="password"
-                  placeholder="Password"
-                />
+              <Form.Item>
+                {getFieldDecorator("password", {
+                  rules: [
+                    { required: true, message: "Please input your Password!" },
+                  ],
+                })(
+                  <Input
+                    prefix={
+                      <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    type="password"
+                    placeholder="Password"
+                  />
+                )}
               </Form.Item>
               <Form.Item>
                 <Button
@@ -40,5 +64,5 @@ class Login extends React.Component {
     );
   }
 }
-const WrapLogin=Form.create()(Login);
-export default WrapLogin
+const WrapLogin = Form.create()(Login);
+export default WrapLogin;
